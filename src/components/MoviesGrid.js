@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles.css";
 import MovieCard from "./MovieCard";
+import SearchBar from "./SearchBar";
 
 const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
@@ -12,23 +13,13 @@ const MoviesGrid = () => {
       .then((data) => setMovies(data));
   }, []);
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div>
-      <input
-        type="text"
-        className="search-input"
-        placeholder="Search movies..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
+      <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <div className="movies-grid">
         {filteredMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
