@@ -19,13 +19,25 @@ const MoviesGrid = () => {
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleGenreChange = (e) => {
+    setGenre(e.target.value);
+  };
+
+  const handleRatingChange = (e) => {
+    setRating(e.target.value);
+  };
+
   return (
     <div>
       <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <div className="filter-bar">
         <div className="filter-slot">
           <label>Genre</label>
-          <select className="filter-dropdown">
+          <select
+            className="filter-dropdown"
+            onChange={handleGenreChange}
+            value={genre}
+          >
             <option>All Genres</option>
             <option>Action</option>
             <option>Fantasy</option>
@@ -35,7 +47,11 @@ const MoviesGrid = () => {
         </div>
         <div className="filter-slot">
           <label>Rating</label>
-          <select className="filter-dropdown">
+          <select
+            className="filter-dropdown"
+            onChange={handleRatingChange}
+            value={rating}
+          >
             <option>All</option>
             <option>Good</option>
             <option>Ok</option>
