@@ -3,7 +3,7 @@ import "../styles.css";
 import MovieCard from "./MovieCard";
 import SearchBar from "./SearchBar";
 
-const MoviesGrid = ({ movies, watchlist, toggleWatchList }) => {
+const MoviesGrid = ({ movies, watchlist, toggleWatchlist }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
@@ -86,7 +86,7 @@ const MoviesGrid = ({ movies, watchlist, toggleWatchList }) => {
           <MovieCard
             key={movie.id}
             movie={movie}
-            toggleWatchList={toggleWatchList}
+            toggleWatchlist={toggleWatchlist}
             isWatchListed={watchlist.includes(movie.id)}
           />
         ))}
