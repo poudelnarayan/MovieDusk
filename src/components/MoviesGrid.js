@@ -3,12 +3,10 @@ import "../styles.css";
 import MovieCard from "./MovieCard";
 import SearchBar from "./SearchBar";
 
-const MoviesGrid = ({movies}) => {
+const MoviesGrid = ({ movies, watchlist, toggleWatchList }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
-
-  
 
   const handleGenreChange = (e) => {
     setGenre(e.target.value);
@@ -85,7 +83,12 @@ const MoviesGrid = ({movies}) => {
       </div>
       <div className="movies-grid">
         {filteredMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            toggleWatchList={toggleWatchList}
+            isWatchListed={watchlist.includes(movie.id)}
+          />
         ))}
       </div>
     </div>
